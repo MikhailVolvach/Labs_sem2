@@ -76,13 +76,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="dbmsLib_v1_1.h" />
+    <ClCompile Include="testDB.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="dbmsStatLib_v1_1.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="testDB.cpp" />
+    <ClInclude Include="dbmsLib_v1_1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

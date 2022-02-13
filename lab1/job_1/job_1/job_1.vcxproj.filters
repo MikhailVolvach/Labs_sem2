@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dbmsLib_v1_1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="testDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="dbmsStatLib_v1_1.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="testDB.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="dbmsLib_v1_1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
