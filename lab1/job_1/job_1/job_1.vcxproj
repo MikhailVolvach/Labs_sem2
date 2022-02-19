@@ -76,7 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="testDB.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\Downloads\2_semestr\2 семестр\ПКШ21_ЛР\ПКШ2021_Лаб1\testDB.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="dbmsStatLib_v1_1.lib" />

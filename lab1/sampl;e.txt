@@ -1,0 +1,40 @@
+/*for (auto& item : tab.GetRow(0))
+			{
+				cout << item.first << " : " << item.second << endl;
+			}*/
+			/*for (auto& item : tab[0])
+			{
+				cout << item.first << " : " << item.second << endl;
+			}
+			for (auto& item : tab[1])
+			{
+				cout << item.first << " : " << item.second << endl;
+			}
+			for (auto& item : tab[2])
+			{
+				cout << item.first << " : " << item.second << endl;
+			}
+			cout << "---------------------" << endl;*/
+
+			//cout << dbmsLib::GetValue(S, "Group", tab.GetHeader()) << " " << S << endl;
+
+
+			cout << "Введите id студента: "; cin >> studentId;
+			cout << tab.valueToString(tab[studentId - 1], "Group") << " -> ";/* cin >> newGroup;*/
+			cout << endl;
+			//dbmsLib::SetValue(newGroup, "Group", tab.GetHeader());
+			//cout << tab[studentId - 1] << endl;	
+			for (auto& item : tab[studentId - 1])
+			{
+				cout << item.first << " : " << item.second << endl;
+			}
+			cout << "**************" << endl;
+			//auto group = tab[studentId - 1].find("Group");
+			/*cout << tab[studentId - 1].find("Group")->first << " " << tab[studentId - 1].find("Group")->second << endl;*/
+
+			cout << tab[studentId - 1].find("Group")->second << endl;
+			tab[studentId - 1].find("Group")->second = "IU5-22";
+			cout << tab[studentId - 1].find("Group")->second << endl;
+
+			cout << "Группа обновлена" << endl;
+			tab.PrintTable(screenWidth);
