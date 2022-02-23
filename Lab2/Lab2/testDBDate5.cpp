@@ -60,17 +60,21 @@ void testing() {
 
 	typedef dbmsLib5::DBDate5 Date5;
 
-	Date5 date("29.2.2021");
-	Date5 date2("09.02.2021");
+	Date5 date("03.02.2019");
+	Date5 date2("09.09.2021");
 	Date5 date3(29, 2, 2000);
 	Date5 date4;
+	Date5 date5("30.2.2000");
 
+	//date.GetDay();
+	//date2.GetMonth();
+	//date3.GetYear();
 
-	date.GetDay();
-	date2.GetMonth();
-	date3.GetYear();
+	//cout << date4.GetDaysInMonth(2, 2000) << " " << date4.GetDaysInMonth(2, 1999) << endl;
 
-	cout << date4.GetDaysInMonth(2, 2000) << date4.GetDaysInMonth(2, 1999) << endl;
+	cout << "Разница " << date - date2 << endl;
+
+	
 	//cout << 
 
 }
