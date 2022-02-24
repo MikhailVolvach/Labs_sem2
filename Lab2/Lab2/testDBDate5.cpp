@@ -63,15 +63,20 @@ void testing() {
 	Date5 date("03.03.2020");
 	Date5 date2("09.09.2021");
 	Date5 date3(29, 2, 2000);
-	Date5 date4;
-	Date5 date5("30.2.2000");
+	Date5 date4("12.01.2000");
+	Date5 date5("7.03.2021");
 	//Date5 date6(date);
 
 
 	//cout << "Копия " << date6 << endl;
-	cout << "до 3 марта " << date.DaysInCurYear() << endl;
+	/*cout << "до 3 марта " << date.DaysInCurYear() << endl;
 	cout << "Сравнение " << static_cast<int>(date != date2) << endl;
-	//cout << "Сравнение2 " << static_cast<int>(date != date6) << endl;
+	cout << "Сравнение2 " << static_cast<int>(date5 > date) << endl;*/
+
+	date4 = date4 += 20;
+	cout << "+120 " << date4.GetDay() << "." << date4.GetMonth() << "." << date4.GetYear() << endl;
+	date5 = date5 -= 100;
+	cout << "-100 " << date5.GetDay() << "." << date5.GetMonth() << "." << date5.GetYear() << endl;
 
 	//date.GetDay();
 	//date2.GetMonth();
@@ -79,7 +84,7 @@ void testing() {
 
 	//cout << date4.GetDaysInMonth(2, 2000) << " " << date4.GetDaysInMonth(2, 1999) << endl;
 
-	cout << "Разница " << date - date2 << endl;
+	//cout << "Разница " << date - date2 << endl;
 
 	
 	//cout << 

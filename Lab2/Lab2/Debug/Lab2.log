@@ -1,2 +1,6 @@
-﻿testDBDate5.obj : error LNK2019: unresolved external symbol "class std::basic_ostream<char,struct std::char_traits<char> > & __cdecl dbmsLib5::operator<<(class std::basic_ostream<char,struct std::char_traits<char> > &,class dbmsLib5::DBDate5 &)" (??6dbmsLib5@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV12@AAVDBDate5@0@@Z) referenced in function "void __cdecl testing(void)" (?testing@@YAXXZ)
-C:\Users\misha\Documents\programs\Labs_sem2\Lab2\Debug\Lab2.exe : fatal error LNK1120: 1 unresolved externals
+﻿  DBDate5.cpp
+c:\users\misha\documents\programs\labs_sem2\lab2\lab2\dbdate5.cpp(149): warning C4018: '<' : signed/unsigned mismatch
+c:\users\misha\documents\programs\labs_sem2\lab2\lab2\dbdate5.cpp(362): warning C4172: returning address of local variable or temporary
+c:\users\misha\documents\programs\labs_sem2\lab2\lab2\dbdate5.cpp(407): warning C4172: returning address of local variable or temporary
+c:\users\misha\documents\programs\labs_sem2\lab2\lab2\dbdate5.cpp(141): warning C4715: 'dbmsLib5::DBDate5::GetDaysInMonth' : not all control paths return a value
+  Lab2.vcxproj -> C:\Users\misha\Documents\programs\Labs_sem2\Lab2\Debug\Lab2.exe
