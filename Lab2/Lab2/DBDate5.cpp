@@ -128,22 +128,40 @@ namespace dbmsLib5 {
 		{
 			year = DBDate5::GetYear();
 		}*/
-		if (!DBDate5::IsLeapYear(year))
+		if (!this->IsLeapYear(year))
 		{
-			cout << DBDate5::arrDays[month] << endl;
-			return DBDate5::arrDays[month];
+			cout << this->arrDays[month] << endl;
+			return this->arrDays[month];
 		}
 		else
 		{
 			if (month == 2)
 			{
-				cout << DBDate5::arrDays[month] + 1 << endl;
-				return DBDate5::arrDays[month] + 1;
+				cout << this->arrDays[month] + 1 << endl;
+				return this->arrDays[month] + 1;
 			}
 		}
 	}
 	int DBDate5::DaysInCurYear() {
-		int year = DBDate5::GetYear();
+		int amnt = 0;
+		
+		int Year = this->year;
+		int Month = this->month;
+		int Day = this->day;
+
+		for (size_t i = 1; i < Month; i++)
+		{
+			amnt += arrDays[i];
+		}
+		amnt += Day;
+		if (IsLeapYear(Year) && month > 2)
+		{
+			amnt++;
+		}
+
+		return amnt;
+		
+		/*int year = DBDate5::GetYear();
 		if (DBDate5::IsLeapYear(year))
 		{
 			cout << 366 << endl;
@@ -153,7 +171,7 @@ namespace dbmsLib5 {
 		{
 			cout << 365 << endl;
 			return 365;
-		}
+		}*/
 	}
 	/*bool DBDate5::operator==(DBDate5& date) {
 		return true;
@@ -169,12 +187,33 @@ namespace dbmsLib5 {
 	}
 	bool DBDate5::operator>=(DBDate5& date) {
 		return true;
-	}
-	bool DBDate5::operator!=(DBDate5& date) {
-		return true;
 	}*/
+	bool DBDate5::operator!=(DBDate5& date) {
+		int currDay = this->day;
+		int currMonth = this->month;
+		int currYear = this->year;
+
+		int newDay = date.day;
+		int newMonth = date.month;
+		int newYear = date.year;
+
+		if (currYear != newYear)
+		{
+			return true;
+		}
+		if (currMonth != newMonth)
+		{
+			return true;
+		}
+		if (currDay != newDay)
+		{
+			return true;
+		}
+
+		return false;
+	}
 	/*DBDate5& DBDate5::operator+=(int days) {
-		cout << "+" << days << endl;
+		
 	}*/
 	/*DBDate5& DBDate5::operator-=(int days) {
 		cout << "-" << days << endl;
@@ -183,9 +222,9 @@ namespace dbmsLib5 {
 
 		// Как работает: https://ru.wikipedia.org/wiki/%D0%AE%D0%BB%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%B4%D0%B0%D1%82%D0%B0
 
-		int currDay = DBDate5::GetDay();
-		int currMonth = DBDate5::GetMonth();
-		int currYear = DBDate5::GetYear();
+		int currDay = this->day;
+		int currMonth = this->month;
+		int currYear = this->year;
 
 		int newDay = date.day;
 		int newMonth = date.month;
