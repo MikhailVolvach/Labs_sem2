@@ -1,10 +1,7 @@
 #include <iostream>
-#include <fstream>
 #include <strstream>
 #include <iomanip>
 #include <string>
-#include <vector>
-#include <map>
 #include "dbmsLib5.h"
 
 using namespace std;
@@ -116,6 +113,10 @@ namespace dbmsLib5
 		cout << this->year << endl;
 		return this->year;
 	}
+	string dbmsLib5::DateToStr(DBDate5& date)
+	{
+		return to_string(date.day) + "." + to_string(date.month) + "." + to_string(date.year);
+	}
 	bool DBDate5::IsLeapYear(int year) {
 		if (year % 4 == 0)
 		{
@@ -158,24 +159,12 @@ namespace dbmsLib5
 
 		return amnt;
 
-		/*int year = DBDate5::GetYear();
-		if (DBDate5::IsLeapYear(year))
-		{
-			cout << 366 << endl;
-			return 366;
-		}
-		else
-		{
-			cout << 365 << endl;
-			return 365;
-		}*/
 	}
 	bool DBDate5::operator==(DBDate5& date) {
 		if ((date.year == this->year) && (date.month == this->month) && (date.day == this->day)) return true;
 		return false;
 
 	}
-
 	bool DBDate5::operator<(DBDate5& date) {
 		int currYear = this->year;
 		int currMonth = this->month;
@@ -391,12 +380,20 @@ namespace dbmsLib5
 		}*/
 		while (days >= 28)
 		{
-			
 			currMonthDays = arrDays[currMonth];
 			days -= currMonthDays;
+			if (currMonth == 2 && IsLeapYear(currYear))
+			{
+				days--;
+			}
 			currMonth--;
-
+			if (currMonth == 0)
+			{
+				currMonth = 12;
+				currYear--;
+			}
 		}
+
 
 		currDay = arrDays[currMonth] - days;
 

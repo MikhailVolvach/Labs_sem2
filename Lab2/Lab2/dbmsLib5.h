@@ -3,12 +3,9 @@
 #ifndef _dbmsLib5_
 #define _dbmsLib5_
 #include <iostream>
-#include <fstream>
 #include <strstream>
 #include <iomanip>
 #include <string>
-#include <vector>
-#include <map>
 
 using namespace std;
 namespace dbmsLib5
@@ -28,6 +25,7 @@ namespace dbmsLib5
 		int GetDay();
 		int GetMonth();
 		int GetYear();
+		//string DateToStr(DBDate5& date);
 		bool IsLeapYear(int year); //год высокосный?
 		int GetDaysInMonth(int month, int year);// оличество дней в мес€це
 		int DaysInCurYear();// оличество дней от начала года до текущей даты

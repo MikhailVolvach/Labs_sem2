@@ -2,15 +2,16 @@
 #include <iomanip>
 #include "dbmsLib5.h"
 using namespace std;
+
+typedef dbmsLib5::DBDate5 Date5;
+
 int menu() {
 	cout << "================= МАКЕТ СУБД ===================\n";
-	cout << "\t1 - Чтение таблицы из файла\n";
-	cout << "\t2 - Печать таблицы\n";
-	/*cout << "\t3 - Запись таблицы в файл\n";
-	cout << "\t4 - Добавление записи в таблицу\n";
-	cout << "\t5 - Перевести студента в другую группу\n";
-	cout << "\t6 - Распечатать фамилию студента, StudentID которого равен 3\n";
-	cout << "\t7 - Увеличить на 1 количество экземпляров всех книг в библиотеке \n";*/
+	cout << "\t1 - Создание объектов DBDate1 и проверка конструкторов\n";
+	cout << "\t2 - Перегрузка и тестирование логических операторов сравнения\n";
+	cout << "\t3 - Перегрузка и тестирование оператора DBDate1& operator+=(int days)\n"; 
+	cout << "\t4 - Перегрузка и тестирование оператора DBDate1& operator-=(int days)\n"; 
+	cout << "\t5 - Перегрузка и тестирование оператора int operator-(DBD1ate& date)\n";
 	cout << "\t8 - Тестирование\n";
 	cout << "\t10 - Выход\n";
 	int choice;
@@ -28,50 +29,12 @@ int menu() {
 //-----------------------------------------------------------------
 
 void testing() {
-	/*string intStr("  12.3.2020   ");
-	dbmsLib5::DBDate dat(intStr);
-	cout << dat << endl;
-	cout << "dbName=" << dbName << "  tabName=" << tabName << endl;
-	string path = "..\\" + dbName + "\\";
-	int screenWidth = 40;
-	dbmsLib5::DBTableTxt tab;
-	tab.ReadDBTable(path + tabName + ".txt");
-	tab.PrintTable(screenWidth);
-	string value = tab.valueToString(tab[0], "Author");
-	int id;
-	cout << *(string*)dbmsLib::GetValue(value, "Author", tab.GetHeader()) << endl;*/
-	/*dbmsLib::Strip* strips;
-	int nStrip;
-	tab.CreateTableMaket(strips, nStrip,screenWidth);
-	cout<<"nStrip="<<nStrip<<endl;
-	for(int i=0;i<nStrip;i++){
-		cout<<"strip="<<i<<endl;
-		for(int j=0;j<strips[i].nField;j++)
-			cout<<strips[i].fieldWidth[j]<<' ';
-		cout<<endl;
-	}*/
-	/*string str2("  29.2.2021   ");
-	dbmsLib5::DBDate5 datStr2;
-	cout << "str2=" << str2 << " dat2=" << datStr2 << endl;
-	cout << endl;
-	dbmsLib5::DBDate5 datStr;
-	cout << "str2=" << str2 << " dat2=" << datStr << endl;
-	cout << endl;*/
-
-	typedef dbmsLib5::DBDate5 Date5;
 
 	Date5 date("03.03.2020");
 	Date5 date2("09.09.2021");
 	Date5 date3(29, 2, 2000);
 	Date5 date4("12.01.2000");
-	Date5 date5("7.03.2021");
-	//Date5 date6(date);
-
-
-	//cout << "Копия " << date6 << endl;
-	/*cout << "до 3 марта " << date.DaysInCurYear() << endl;
-	cout << "Сравнение " << static_cast<int>(date != date2) << endl;
-	cout << "Сравнение2 " << static_cast<int>(date5 > date) << endl;*/
+	Date5 date5("7.05.2000");
 
 	date4 = date4 += 20;
 	cout << "+120 " << date4.GetDay() << "." << date4.GetMonth() << "." << date4.GetYear() << endl;
@@ -92,59 +55,36 @@ void testing() {
 }
 
 //=================================================
+
+void initializing() {
+	Date5 date1("03.02.2000");
+	Date5 date2(29, 02, 2000);
+	Date5 date3;
+	Date5 dateCopy(date1);
+
+	//cout << "Дата 1: " << dbmsLib5::DateToStr(date1) << endl;s
+}
+
+
+
 int main() {
 	system("chcp 1251>nul");
-	//cout<<"Введите имя БД\n"; //"LibraryTxt" 
-	//для удобства тестирования при отладке выполняем присваивание
-	//string dbName("LibraryTxt");
-	//cin>>dbName;
-	//cout << dbName << endl;
-	//cout<<"Введите имя таблицы БД\n";
-	//"Students" "Abonements" "Books"- для LibraryTxt
-	//для удобства тестирования при отладке выполняем присваивание
-	//string tabName("Students");
-	//cin>>tabName;
-	//dbmsLib::DBTableTxt tab;//создание пустой таблицы класса DBTableTxt,
-		//определенного в подключенной к проекту библиотеке dbmsLib
-	//string path = "..\\" + dbName + "\\";
-	//	cout<<"Введите текущую дату dd.mm.yyyy\n";
-	//для удобства тестирования при отладке выполняем присваивание
-	//string str("11.02.2020");
-	//	cin>>str;
-	//dbmsLib::DBDate today(str);
-	//	cout<<"Введите ширину экрана в символах\n";
-	int screenWidth = 78;
-	//	cin>>screenWidth;
-	int ind;
-	vector<int> indexes;
+
 	while (true) {
 		switch (menu()) {
-		//case 1: tab.ReadDBTable(path + tabName + ".txt");//Чтение таблиц БД. 
-			//БД хранится в папке "..\\"+dbName+". 
-			//Имя БД оканчивается или на Txt, если таблицы БД хранятся в текстовых файлах,
-			//Каждая таблица хранится в отдельном файле с именем = <имя таблицы>+".txt"
-			//Структура файла:
-			//Первая строка файла содержит имя таблицы и имя столбца с первичным ключем
-			//Вторая строка файла - заголовок таблицы
-			//Все последующие строки - записи таблицы. 
+		case 1:
+			initializing();
 			break;
-		//case 2: tab.PrintTable(screenWidth);//Печать таблицы БД (screenWidth-ширина экрана)
+		case 2:
+
+			//cout << ;
 			break;
-		/*case 3: tab.WriteDBTable(path + tabName + ".txt");
+		case 3:
 			break;
-		case 4: tab.AddRow(tab.CreateRow(), tab.GetSize());
+		case 4: 
 			break;
-		case 5:*(string*)tab[3]["Group"] = "IU5-24b";
+		case 5:
 			break;
-		case 6: ind = 3;
-			indexes = tab.IndexOfRecord(&ind, "StudentID");
-			cout << *(string*)tab[indexes[0]]["Name"] << endl;
-			break;
-		case 7: tabName = "Books";
-			tab.ReadDBTable(path + tabName + ".txt");
-			for (int i = 0; i < tab.GetSize(); i++)
-				(*(int*)tab[i]["Quantity"])++;
-			break;*/
 		case 8:testing();
 			break;
 		case 10: return 0;//завершение работы

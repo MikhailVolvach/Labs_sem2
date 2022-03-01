@@ -21,6 +21,9 @@
     <ClCompile Include="DBDate5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dbmsLib5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dbmsLib5.h">

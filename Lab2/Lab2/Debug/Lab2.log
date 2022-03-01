@@ -1,6 +1,1 @@
-﻿  DBDate5.cpp
-c:\users\misha\documents\programs\labs_sem2\lab2\lab2\dbdate5.cpp(149): warning C4018: '<' : signed/unsigned mismatch
-c:\users\misha\documents\programs\labs_sem2\lab2\lab2\dbdate5.cpp(362): warning C4172: returning address of local variable or temporary
-c:\users\misha\documents\programs\labs_sem2\lab2\lab2\dbdate5.cpp(407): warning C4172: returning address of local variable or temporary
-c:\users\misha\documents\programs\labs_sem2\lab2\lab2\dbdate5.cpp(141): warning C4715: 'dbmsLib5::DBDate5::GetDaysInMonth' : not all control paths return a value
-  Lab2.vcxproj -> C:\Users\misha\Documents\programs\Labs_sem2\Lab2\Debug\Lab2.exe
+﻿  Lab2.vcxproj -> C:\Users\misha\Documents\programs\Labs_sem2\Lab2\Debug\Lab2.exe
