@@ -29,61 +29,110 @@ int menu() {
 //-----------------------------------------------------------------
 
 void testing() {
+	Date5 testDate1;
+	Date5 testDate2;
+	Date5 testDate3;
+	Date5 testDate4;
 
-	Date5 date("03.03.2020");
-	Date5 date2("09.09.2021");
-	Date5 date3(29, 2, 2000);
-	Date5 date4("12.01.2000");
-	Date5 date5("7.05.2000");
+	string date;
 
-	date4 = date4 += 20;
-	cout << "+120 " << date4.GetDay() << "." << date4.GetMonth() << "." << date4.GetYear() << endl;
-	date5 = date5 -= 100;
-	cout << "-100 " << date5.GetDay() << "." << date5.GetMonth() << "." << date5.GetYear() << endl;
+	int daysAmnt = 0;
 
-	//date.GetDay();
-	//date2.GetMonth();
-	//date3.GetYear();
+	cout << "Введите дату в формате дд.мм.гггг: "; cin >> date;
+	testDate1 = Date5(date);
 
-	//cout << date4.GetDaysInMonth(2, 2000) << " " << date4.GetDaysInMonth(2, 1999) << endl;
+	cout << "Введите дату в формате дд.мм.гггг: "; cin >> date;
+	testDate2 = Date5(date);
 
-	//cout << "Разница " << date - date2 << endl;
+	cout << testDate1 << endl;
+	cout << testDate2 << endl;
 
-	
-	//cout << 
+	// Операторы сравнения
+	cout << "\tОператоры сравнения" << endl;
+	cout << "testDate1 == testDate2: " << static_cast<int>(testDate1 == testDate2) << endl;
+	cout << "testDate1 != testDate2: " << static_cast<int>(testDate1 != testDate2) << endl;
+	cout << "testDate1 < testDate2: " << static_cast<int>(testDate1 < testDate2) << endl;
+	cout << "testDate1 > testDate2: " << static_cast<int>(testDate1 > testDate2) << endl;
+	cout << "testDate1 <= testDate2: " << static_cast<int>(testDate1 <= testDate2) << endl;
+	cout << "testDate1 >= testDate2: " << static_cast<int>(testDate1 >= testDate2) << endl;
 
+	// Прибаваить/вычесть кол-во дней из даты
+	cout << "\tПрибаваить/вычесть кол-во дней из даты" << endl;
+	cout << "Введите кол-во дней, которые надо прибавить к дате: "; cin >> daysAmnt;
+	cout << testDate1 << " + " << daysAmnt << " = ";
+	testDate1 = testDate1 += daysAmnt;
+	cout << testDate1 << endl;
+
+	cout << "Введите кол-во дней, которые надо вычесть из даты: "; cin >> daysAmnt;
+	cout << testDate2 << " - " << daysAmnt << " = ";
+	testDate2 = testDate2 += daysAmnt;
+	cout << testDate2 << endl;
+
+	// Разность дат
+	cout << "\tРазность дат" << endl;
+	cout << "testDate1 - testDate2 = " << testDate1 - testDate2 << endl;
+}
+
+void dateOut(Date5& date, int nomber) {
+	cout << "Date" << nomber << ": day=" << date.GetDay() << " month=" << date.GetMonth() << " year=" << date.GetYear() << endl;
 }
 
 //=================================================
-
-void initializing() {
-	Date5 date1("03.02.2000");
-	Date5 date2(29, 02, 2000);
-	Date5 date3;
-	Date5 dateCopy(date1);
-
-	//cout << "Дата 1: " << dbmsLib5::DateToStr(date1) << endl;s
-}
-
-
-
 int main() {
 	system("chcp 1251>nul");
+
+	Date5 date1;
+	Date5 date2;
+	Date5 date3;
+	Date5 date4;
+
 
 	while (true) {
 		switch (menu()) {
 		case 1:
-			initializing();
+			//initializing();
+			date1 = Date5("27.09.2001");
+			date2 = Date5(13, 01, 1800);
+			date4 = date1;
+
+			dateOut(date1, 1);
+			dateOut(date2, 2);
+			dateOut(date3, 3);
+			dateOut(date4, 4);
 			break;
 		case 2:
-
+			cout << "date1 == date4: " << static_cast<int>(date1 == date4) << endl;
+			cout << "date1 == date2: " << static_cast<int>(date1 == date2) << endl;
+			cout << "date1 < date2: " << static_cast<int>(date1 < date2) << endl;
+			cout << "date2 < date1: " << static_cast<int>(date2 < date1) << endl;
+			cout << "date1 > date4: " << static_cast<int>(date1 > date4) << endl;
+			cout << "date1 > date2: " << static_cast<int>(date1 > date2) << endl;
+			cout << "date1 <= date2: " << static_cast<int>(date1 <= date2) << endl;
+			cout << "date1 <= date4: " << static_cast<int>(date1 <= date4) << endl;
+			cout << "date2 >= date1: " << static_cast<int>(date2 >= date1) << endl;
+			cout << "date1 >= date4: " << static_cast<int>(date1 >= date4) << endl;
+			cout << "date1 != date4: " << static_cast<int>(date1 != date4) << endl;
+			cout << "date1 != date2: " << static_cast<int>(date1 != date2) << endl;
 			//cout << ;
 			break;
 		case 3:
+			cout << "Date1 до сложения: ";
+			dateOut(date1, 1);
+			date1 = date1 += 200;
+			cout << "Date1+=200 = "; 
+			dateOut(date1, 1);
 			break;
 		case 4: 
+			cout << "Date2 до вычитания: ";
+			dateOut(date2, 2);
+			date2 = date2 -= 300;
+			cout << "Date2-=300 = ";
+			dateOut(date2, 2);
 			break;
 		case 5:
+			dateOut(date1, 1);
+			dateOut(date2, 2);
+			cout << "Date2 - Date1 = " << date1 - date2 << endl;
 			break;
 		case 8:testing();
 			break;

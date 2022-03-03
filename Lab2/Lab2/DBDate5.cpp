@@ -6,12 +6,20 @@
 
 using namespace std;
 
-// TODO:
-// 1) День не должен быть больше максимального для конкретного месяца, но при этом учитывать високосный год (Конструкторы -> Проверка дня)
-
 namespace dbmsLib5
 {
+	// Методы класса DBDate5
 	const int DBDate5::arrDays[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	string DateToStr(DBDate5& date)
+	{
+		return to_string(date.day) + "." + to_string(date.month) + "." + to_string(date.year); // Строка с датой в формате день.месяц.год
+	}
+	ostream& operator<<(ostream& out, DBDate5& date)
+	{
+		out << DateToStr(date);
+		return out;
+	}
+
 	DBDate5::DBDate5(string date) {
 		int firstDotPos, LastDotPos;
 
@@ -59,7 +67,7 @@ namespace dbmsLib5
 			exit(1);
 		}
 
-		cout << this->day << " " << this->month << " " << this->year << endl;
+		//cout << this->day << " " << this->month << " " << this->year << endl;
 	}
 	DBDate5::DBDate5(int d, int m, int y)
 	{
@@ -99,23 +107,19 @@ namespace dbmsLib5
 			exit(1);
 		}
 
-		cout << this->day << " " << this->month << " " << this->year << endl;
+		//cout << this->day << " " << this->month << " " << this->year << endl;
 	}
 	int DBDate5::GetDay() {
-		cout << this->day << endl;
+		//cout << this->day << endl;
 		return this->day;
 	}
 	int DBDate5::GetMonth() {
-		cout << this->month << endl;
+		//cout << this->month << endl;
 		return this->month;
 	}
 	int DBDate5::GetYear() {
-		cout << this->year << endl;
+		//cout << this->year << endl;
 		return this->year;
-	}
-	string dbmsLib5::DateToStr(DBDate5& date)
-	{
-		return to_string(date.day) + "." + to_string(date.month) + "." + to_string(date.year);
 	}
 	bool DBDate5::IsLeapYear(int year) {
 		if (year % 4 == 0)
@@ -128,14 +132,14 @@ namespace dbmsLib5
 
 		if (!this->IsLeapYear(year))
 		{
-			cout << this->arrDays[month] << endl;
+			//cout << this->arrDays[month] << endl;
 			return this->arrDays[month];
 		}
 		else
 		{
 			if (month == 2)
 			{
-				cout << this->arrDays[month] + 1 << endl;
+				//cout << this->arrDays[month] + 1 << endl;
 				return this->arrDays[month] + 1;
 			}
 		}
@@ -174,21 +178,19 @@ namespace dbmsLib5
 		int newMonth = date.month;
 		int newDay = date.day;
 
-		if (currYear > newYear) return true;
+		if (currYear < newYear) return true;
 
 		if (currYear == newYear)
 		{
-			if (currMonth > newMonth) return true;
+			if (currMonth < newMonth) return true;
 
 			if (currMonth == newMonth)
 			{
-				if (currDay > newDay) return true;
+				if (currDay < newDay) return true;
 				return false;
 			}
 			return false;
 		}
-		if (currYear > newYear) return true;
-
 		return false;
 	}
 	bool DBDate5::operator>(DBDate5& date) {
@@ -387,13 +389,12 @@ namespace dbmsLib5
 				days--;
 			}
 			currMonth--;
-			if (currMonth == 0)
+			if (currMonth <= 0)
 			{
 				currMonth = 12;
 				currYear--;
 			}
 		}
-
 
 		currDay = arrDays[currMonth] - days;
 
