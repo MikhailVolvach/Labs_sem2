@@ -1,3 +1,0 @@
-﻿  testDB.cpp
-c:\users\misha\downloads\2_semestr\2 семестр\пкш21_лр\пкш2021_лаб1\testdb.cpp(41): warning C4101: 'id' : unreferenced local variable
-LINK : fatal error LNK1168: cannot open C:\Users\misha\Documents\programs\Labs_sem2\lab1\job_1\Debug\job_1.exe for writing

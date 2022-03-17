@@ -1,4 +1,0 @@
-TableRelations|RelationName
-ChildSecondaryKey|String|12|ChildTable|String|12|ParentPrimaryKey|String|12|ParentTable|String|12|RelationName|String|20
-StudentID|Abonements|StudentID|Students|StudentsAbonements
-BookID|Abonements|BookID|Books|BooksAbonements
