@@ -3,7 +3,7 @@
 using namespace std;
 
 namespace dbmsLib5 {
-	
+
 	//****************************************************
 	// Класс DBTableTxt
 	//****************************************************
@@ -66,7 +66,7 @@ namespace dbmsLib5 {
 	int GetLength(ColumnDesc colDesc)
 	{
 		return 0;
-	}
+	} // Реализовать
 	int DBTableTxt::GetSize()
 	{
 		return 0;
@@ -99,96 +99,112 @@ namespace dbmsLib5 {
 	{
 		//cout << tabName << endl;
 		ifstream FILE(tabName);
-		while (!FILE.eof())
+		string line;
+		getline(FILE, line);  // Первая строка
+		this->tableName = line.substr(0, line.find_first_of('|'));
+
+		getline(FILE, line);  // Вторая строка
+		ColumnDesc Title;
+		int i = 0;
+		int cnt = 0;
+		string word = "";
+		line.append("|");
+		while (i < line.length())
 		{
-			string line;
-			getline(FILE, line);  // Первая строка
-			this->tableName = line.substr(0, line.find_first_of('|'));
-
-			getline(FILE, line);  // Вторая строка
-			ColumnDesc Title;
-			int i = 0;
-			int cnt = 0;
-			string word = "";
-			while (line[i] != ' ' || line[i] != '\n')
+			if (line[i] != '|' && line[i] != '\0' && line[i] != '\n')
 			{
-				if (line[i] != '|')
+				word += line[i];
+			}
+			else
+			{
+				switch (cnt)
 				{
-					word += line[i];
+				case 0: {
+					strcpy(Title.colName, word.c_str());
+					cout << "Title.colName = " << Title.colName << endl;
+					word = "";
+					cnt++;
+					break;
 				}
-				else
-				{
-					switch (cnt)
+				case 1: {
+					if (word == "NoType")
 					{
-					case 0: {
-						strcpy(Title.colName, word.c_str());
-						cout << "Title.colName = " << Title.colName << endl;
-						word = "";
-						cnt++;
-						break;
+						Title.colType = NoType;
 					}
-					case 1: {
-						//strcpy(Title.colType)
-						if (word == "NoType")
-						{
-							Title.colType = NoType;
-							word = "";
-							cnt++;
-							break;
-						}
-						if (word == "Int32")
-						{
-							Title.colType = Int32;
-							word = "";
-							cnt++;
-							break;
-						}
-						if (word == "Double")
-						{
-							Title.colType = Double;
-							word = "";
-							cnt++;
-							break;
-						}
-						if (word == "String")
-						{
-							Title.colType = String;
-							word = "";
-							cnt++;
-							break;
-						}
-						if (word == "Date")
-						{
-							Title.colType = Date;
-							word = "";
-							cnt++;
-							break;
-						}
-						cout << "Title.coltype = " << Title.colType << endl;
+					if (word == "Int32")
+					{
+						Title.colType = Int32;
 					}
-					case 2: {
-						Title.length = stoi(word);
-						cout << "Title.length = " << Title.length << endl;
-						word = "";
-						cnt++;
-						break;
+					if (word == "Double")
+					{
+						Title.colType = Double;
 					}
-					default:
-						break;
+					if (word == "String")
+					{
+						Title.colType = String;
 					}
-				}
+					if (word == "Date")
+					{
+						Title.colType = Date;
+					}
+					cout << "Title.coltype = " << Title.colType << endl;
+					word = "";
+					cnt++;
+					break;
 
-				if (cnt == 2)
-				{
-					this->columnHeaders[Title.colName] = Title;
 				}
-				cnt %= 3;
-				i++;
+				case 2: {
+					Title.length = stoi(word);
+					cout << "Title.length = " << Title.length << endl;
+					word = "";
+					cnt++;
+					break;
+				}
+				default:
+					break;
+				}
 			}
 
+			if (cnt == 2)
+			{
+				this->columnHeaders[Title.colName] = Title;
+			}
+			cnt %= 3;
+			i++;
+		}
+
+		i = 0;
+		Row new_row;
+
+		/*auto colName = this->columnHeaders.begin()->first;
+		for (auto it = this->columnHeaders.begin(); it != this->columnHeaders.end(); ++it)
+		{
+			cout << it->second.colName << endl;
+		}*/
+		while (!FILE.eof())
+		{
+			getline(FILE, line);
+			for (auto it = this->columnHeaders.begin(); it != this->columnHeaders.end(); it++)
+			{
+				new_row[it->second.colName] = "Данные";
+			}
+			this->data.push_back(new_row);
+			//cout << line << endl;
+			//for (size_t i = 0; i < this->columnHeaders.size(); i++)
+			//{
+			//	Header currentH = this->columnHeaders;
+			//	auto a = currentH.begin();
+			//	cout << a->first << endl;
+
+			//	//new_row[this->columnHeaders - ];
+			//}
+			
+			//auto colName2 = this->columnHeaders.end()->first;
+			//cout << colName << " " /*<< colName2*/ << endl;
+			//cout << colName->first << endl;
 		}
 	}
-	
+
 	// Вывод на экран
 	void DBTableTxt::PrintTable(int screenWidth)
 	{
@@ -197,10 +213,18 @@ namespace dbmsLib5 {
 
 		cout << "Таблица " << this->tableName << endl;
 		cout << setfill('=') << setw(screenWidth - 1) << "=" << setfill(' ') << endl;
+		for (size_t i = 0; i < this->data.size(); i++)
+		{
+			for (auto it = data[i].begin(); it != data[i].end(); ++it)
+			{
+				cout << &(it->second) << " ";
+			}
+			cout << endl;
+		}
 		//			  Group		  Name	    StudentID
 		//			String		String			Int32	
-		cout << "\tGroup\tName\tStudentID" << endl;
-		cout << "\tString\tString\tInt32" << endl;
+		/*cout << "\tGroup\tName\tStudentID" << endl;
+		cout << "\tString\tString\tInt32" << endl;*/
 		cout << setfill('-') << setw(screenWidth - 1) << "-" << setfill(' ') << endl;
 		cout << "\tДанные таблицы" << endl;
 		cout << setfill('=') << setw(screenWidth - 1) << "=" << setfill(' ') << endl;
@@ -244,13 +268,11 @@ namespace dbmsLib5 {
 		return buf;
 	}
 
-	
-
 	Row DBTableTxt::operator[](int ind)
 	{
 		return Row();
 	}
-	
+
 	Row DBTableTxt::CreateRow()
 	{
 		return Row();
@@ -313,8 +335,6 @@ namespace dbmsLib5 {
 				strips[i].fieldWidth[j] = fieldW[col++];
 		}
 	}
-
-
 
 	string ignoreBlanc(const string str)
 	{
