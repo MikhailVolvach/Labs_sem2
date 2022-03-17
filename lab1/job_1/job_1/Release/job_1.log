@@ -1,7 +1,0 @@
-﻿dbmsStatLib_v1_1.lib(DBTableTxt.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in testDB.obj
-dbmsStatLib_v1_1.lib(DBTableTxt.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in testDB.obj
-dbmsStatLib_v1_1.lib(DBTableTxt.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
-dbmsStatLib_v1_1.lib(DBDate.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '2' doesn't match value '0' in testDB.obj
-dbmsStatLib_v1_1.lib(DBDate.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MD_DynamicRelease' in testDB.obj
-LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
-E:\misha\Documents\Labs_sem2\lab1\job_1\Release\job_1.exe : fatal error LNK1319: 4 mismatches detected
