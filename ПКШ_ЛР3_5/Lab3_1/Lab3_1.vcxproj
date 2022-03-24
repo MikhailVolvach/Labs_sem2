@@ -87,10 +87,23 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddRow.cpp" />
+    <ClCompile Include="Comparator.cpp" />
+    <ClCompile Include="CreateRow.cpp" />
+    <ClCompile Include="CreateTableMaket.cpp" />
     <ClCompile Include="dbmsLib5.cpp" />
-    <ClCompile Include="Lab3_1.cpp" />
+    <ClCompile Include="getters.cpp" />
+    <ClCompile Include="IgnoreBlanc.cpp" />
+    <ClCompile Include="IndexOfRecord.cpp" />
+    <ClCompile Include="operators.cpp" />
+    <ClCompile Include="PrintTablecpp.cpp" />
+    <ClCompile Include="ReadDBTable.cpp" />
+    <ClCompile Include="setters.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="testLab31.cpp" />
+    <ClCompile Include="TypeName.cpp" />
+    <ClCompile Include="ValueToString.cpp" />
+    <ClCompile Include="WriteDBTable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

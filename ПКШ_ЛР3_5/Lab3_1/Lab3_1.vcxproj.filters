@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\MethodsAndFunctions">
+      <UniqueIdentifier>{8dbbff85-d04f-495d-ade2-df21f8c21fc5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -32,16 +35,55 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="dbmsLib5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lab3_1.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AddRow.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="Comparator.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateRow.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateTableMaket.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="getters.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="setters.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadDBTable.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintTablecpp.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="operators.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexOfRecord.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="IgnoreBlanc.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeName.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ValueToString.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="WriteDBTable.cpp">
+      <Filter>Source Files\MethodsAndFunctions</Filter>
     </ClCompile>
     <ClCompile Include="testLab31.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="dbmsLib5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
