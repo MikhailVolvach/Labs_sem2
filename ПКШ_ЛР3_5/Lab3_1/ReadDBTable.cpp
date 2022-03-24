@@ -79,22 +79,54 @@ namespace dbmsLib5 {
 			i++;
 		}
 
-		i = 0;
-		Row new_row;
+		
 
 		/*auto colName = this->columnHeaders.begin()->first;
 		for (auto it = this->columnHeaders.begin(); it != this->columnHeaders.end(); ++it)
 		{
 			cout << it->second.colName << endl;
 		}*/
+
+		//i = 0;
+		Row new_row;
 		while (!FILE.eof())
 		{
 			getline(FILE, line);
+			i = 0;
 			for (auto it = this->columnHeaders.begin(); it != this->columnHeaders.end(); it++)
 			{
-				new_row[it->second.colName] = "Данные";
+				word = "";
+				while (line[i] != '|' && line[i] != '\0' && line[i] != '\n') {
+					if (line[i] != ' ')
+					{
+						word.push_back(line[i]);
+					}
+					i++;
+				}
+				if (line[i] == '|')
+				{
+					i++;
+				}
+				
+				new_row[it->second.colName] = &word;
+				cout << "New_data[" << it->second.colName << "] = " << *static_cast<string*>(new_row[it->second.colName]) << endl;
+				//cout << "it->second.colName = " << it->second.colName << endl;
 			}
 			this->data.push_back(new_row);
+			//i = 0;
+			//word = "";
+			//while (i < line.length())
+			//{
+			//	if (line[i] != '|' && line[i] != '\0' && line[i] != '\n')
+			//	{
+			//		word += line[i];
+			//	}
+			//	/*else {
+			//		
+			//	}*/
+			//	i++;
+			//}
+
 			//cout << line << endl;
 			//for (size_t i = 0; i < this->columnHeaders.size(); i++)
 			//{
