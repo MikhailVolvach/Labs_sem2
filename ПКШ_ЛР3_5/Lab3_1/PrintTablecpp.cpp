@@ -6,31 +6,54 @@ namespace dbmsLib5 {
 		cout << "Таблица " << this->tableName << endl;
 		cout << setfill('=') << setw(screenWidth - 1) << "=" << setfill(' ') << endl;
 
-		//for (size_t i = 0; i < this->data.size(); i++)
-		//{
-		//	//cout << "data.size() = " << data.size() << endl;
-		//	for (auto rowIt = this->data[i].begin(); rowIt != this->data[i].end(); rowIt++)
-		//	{
-		//		cout << *static_cast<string*>(rowIt->second) << " | ";
-		//	}
-		//	cout << endl;
-		//}
-		//cout << endl;
+		// Строка с именами заголовков
+		for each(auto colHeadersIt in this->columnHeaders)
+		{
+			auto colHeadersItVal = colHeadersIt.second;
+			cout << setfill(' ') << setw(colHeadersItVal.length + 3) << colHeadersItVal.colName;
+		}
+		cout << endl;
+		// Строка с типами данных в соответствующих столбцах
+		for each (auto colHeadersIt in this->columnHeaders)
+		{
+			auto colHeadersItVal = colHeadersIt.second;
+			cout << setfill(' ') << setw(colHeadersItVal.length + 3);
+			switch (colHeadersItVal.colType)
+			{
+			case 0:
+				cout << "NoType";
+				break;
+			case 1:
+				cout << "Int32";
+				break;
+			case 2:
+				cout << "Double";
+				break;
+			case 3:
+				cout << "String";
+				break;
+			case 4:
+				cout << "Date";
+				break;
+			default:
+				break;
+			}
+			//cout << "  ";
+		}
+		cout << endl;
+
+		cout << setfill('-') << setw(screenWidth - 1) << "-" << setfill(' ') << endl;
 
 
 		for each (Row row in this->data)
 		{
-			for (auto rowIt = row.begin(); rowIt != row.end(); rowIt++)
+			for each (auto colHeadersIt in this->columnHeaders)
 			{
-				//cout << static_cast<string*>(rowIt->second) << " | ";
-				cout << rowIt->second << " | ";
+				auto colHeadersItVal = colHeadersIt.second;
+				cout << setfill(' ') << setw(colHeadersItVal.length + 3) << row[colHeadersItVal.colName];
 			}
 			cout << endl;
 		}
-		cout << endl;
-		//			  Group		  Name	    StudentID
-		//			String		String			Int32	
-		/*cout << "\tGroup\tName\tStudentID" << endl;
-		cout << "\tString\tString\tInt32" << endl;*/
+		cout << setfill('=') << setw(screenWidth - 1) << "=" << setfill(' ') << endl;
 	}
 }
