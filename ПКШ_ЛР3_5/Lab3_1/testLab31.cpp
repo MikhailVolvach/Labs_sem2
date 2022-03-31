@@ -1,4 +1,5 @@
 #include "dbmsLib5.h"
+
 using namespace std;
 int menu() {
 	cout << "================= люйер ясад ===================\n";
@@ -92,18 +93,20 @@ int main() {
 			break;
 		case 3: tab.WriteDBTable(path + tabName + ".txt");
 			break;
-		case 4: tab.AddRow(tab.CreateRow(), tab.GetSize());
+		case 4: 
+			//tab.AddRow(tab.CreateRow(), tab.GetSize());
 			break;
-		case 5:*(string*)tab[3]["Group"] = "IU5-24b";
+		case 5:
+			//*(string*)tab[3]["Group"] = "IU5-24b";
 			break;
 		case 6: ind = 3;
 			indexes = tab.IndexOfRecord(&ind, "StudentID");
-			cout << *(string*)tab[indexes[0]]["Name"] << endl;
+			//cout << *(string*)tab[indexes[0]]["Name"] << endl;
 			break;
 		case 7: tabName = "Books";
 			tab.ReadDBTable(path + tabName + ".txt");
 			for (int i = 0; i < tab.GetSize(); i++)
-				(*(int*)tab[i]["Quantity"])++;
+				//(*(int*)tab[i]["Quantity"])++;
 			break;
 		case 8:/*testing(dbName, tabName);*/
 			break;

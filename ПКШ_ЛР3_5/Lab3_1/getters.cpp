@@ -28,10 +28,10 @@ namespace dbmsLib5 {
 		return path.substr(pos1, pos2 - pos1 - 1); // tName
 	}
 	// TODO: Реализовать 
-	Row DBTableTxt::GetRow(int index)
+	/*Row DBTableTxt::GetRow(int index)
 	{
 		return Row();
-	} 
+	}*/ 
 	void* GetValue(string value, string columnName, Header hdr)
 	{
 		switch (hdr[columnName].colType)

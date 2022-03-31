@@ -42,7 +42,7 @@ namespace dbmsLib5 {
 		int nField;//число полей 
 		int* fieldWidth;//ширина полей в полосе (массив)
 	};
-	typedef map<string, void*> Row;
+	typedef map<string, string> Row;
 	typedef map<string, ColumnDesc> Header;
 
 	string GetTabNameFromPath(string path);
@@ -67,7 +67,7 @@ namespace dbmsLib5 {
 		const char* TypeName(DBType type);
 		~DBTableTxt() {}
 		vector<int> IndexOfRecord(void* keyValue, string keyColumnName);
-		string valueToString(Row& row, string columnName);
+		//string valueToString(Row& row, string columnName);
 		void ReadDBTable(string tabName);//tabName=path+tableName
 		void PrintTable(int screenWidth);
 		void WriteDBTable(string tabName);//tabName=path+tableName	
@@ -82,9 +82,9 @@ namespace dbmsLib5 {
 		string GetPrimaryKey() { return primaryKey; }
 		Header GetHeader();
 		void SetHeader(Header& hdr);
-		Row CreateRow();
+		/*Row CreateRow();
 		Row GetRow(int index);
-		void AddRow(Row row, int index);
+		void AddRow(Row row, int index);*/
 		//Макет распечатки таблицы:
 		//screenWidth - ширина экрана (входной параметр)
 		//nStrip - число полос в распечатке (выходной параметр)

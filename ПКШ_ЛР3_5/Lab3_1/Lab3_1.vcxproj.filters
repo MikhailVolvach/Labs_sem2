@@ -27,9 +27,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Desktop\2_semestr\2 семестр\ПКШ21_ЛР\ПКШ2021_Лаб1\dbmsLib_v1_1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="dbmsLib5.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -1,20 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "dbmsLib5.h"
 
 namespace dbmsLib5 {
 	void DBTableTxt::ReadDBTable(string tabName)
 	{
-		//cout << tabName << endl;
 		ifstream FILE(tabName);
 		string line;
 		getline(FILE, line);  // Первая строка
 		this->tableName = line.substr(0, line.find_first_of('|'));
+		this->primaryKey = line.substr(line.find_first_of('|') + 1);
 
 		getline(FILE, line);  // Вторая строка
 		ColumnDesc Title;
 		int i = 0;
 		int cnt = 0;
 		string word = "";
-		line.append("|");
 		while (i < line.length())
 		{
 			if (line[i] != '|' && line[i] != '\0' && line[i] != '\n')
@@ -27,7 +27,6 @@ namespace dbmsLib5 {
 				{
 				case 0: {
 					strcpy(Title.colName, word.c_str());
-					cout << "Title.colName = " << Title.colName << endl;
 					word = "";
 					cnt++;
 					break;
@@ -53,7 +52,6 @@ namespace dbmsLib5 {
 					{
 						Title.colType = Date;
 					}
-					cout << "Title.coltype = " << Title.colType << endl;
 					word = "";
 					cnt++;
 					break;
@@ -61,7 +59,6 @@ namespace dbmsLib5 {
 				}
 				case 2: {
 					Title.length = stoi(word);
-					cout << "Title.length = " << Title.length << endl;
 					word = "";
 					cnt++;
 					break;
@@ -79,67 +76,31 @@ namespace dbmsLib5 {
 			i++;
 		}
 
-		
-
-		/*auto colName = this->columnHeaders.begin()->first;
-		for (auto it = this->columnHeaders.begin(); it != this->columnHeaders.end(); ++it)
-		{
-			cout << it->second.colName << endl;
-		}*/
-
-		//i = 0;
-		Row new_row;
+		// Данные таблицы
 		while (!FILE.eof())
 		{
+			Row new_row;
 			getline(FILE, line);
 			i = 0;
 			for (auto it = this->columnHeaders.begin(); it != this->columnHeaders.end(); it++)
 			{
-				word = "";
-				while (line[i] != '|' && line[i] != '\0' && line[i] != '\n') {
+				string word = "";
+				while (line[i] != '|' && line[i] != '\0' && line[i] != '\n') 
+				{
 					if (line[i] != ' ')
 					{
-						word.push_back(line[i]);
+						word += line[i];
 					}
 					i++;
 				}
+
 				if (line[i] == '|')
 				{
 					i++;
 				}
-				
-				new_row[it->second.colName] = &word;
-				cout << "New_data[" << it->second.colName << "] = " << *static_cast<string*>(new_row[it->second.colName]) << endl;
-				//cout << "it->second.colName = " << it->second.colName << endl;
+				new_row[it->second.colName] = word;
 			}
 			this->data.push_back(new_row);
-			//i = 0;
-			//word = "";
-			//while (i < line.length())
-			//{
-			//	if (line[i] != '|' && line[i] != '\0' && line[i] != '\n')
-			//	{
-			//		word += line[i];
-			//	}
-			//	/*else {
-			//		
-			//	}*/
-			//	i++;
-			//}
-
-			//cout << line << endl;
-			//for (size_t i = 0; i < this->columnHeaders.size(); i++)
-			//{
-			//	Header currentH = this->columnHeaders;
-			//	auto a = currentH.begin();
-			//	cout << a->first << endl;
-
-			//	//new_row[this->columnHeaders - ];
-			//}
-
-			//auto colName2 = this->columnHeaders.end()->first;
-			//cout << colName << " " /*<< colName2*/ << endl;
-			//cout << colName->first << endl;
 		}
 	}
 }
