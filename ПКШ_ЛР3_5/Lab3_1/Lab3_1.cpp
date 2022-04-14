@@ -1,5 +1,11 @@
-using namespace std;
+// Lab3_1.cpp : Defines the entry point for the console application.
+//
 
-namespace dbmsLib5 {
+#include "stdafx.h"
 
+
+int _tmain()
+{
+	return 0;
 }
+

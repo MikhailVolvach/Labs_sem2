@@ -4,14 +4,15 @@
 namespace dbmsLib5 {
 	void DBTableTxt::ReadDBTable(string tabName)
 	{
+		this->columnHeaders.clear();
+
 		ifstream FILE(tabName);
 		string line;
-		getline(FILE, line);  // Первая строка
+		getline(FILE, line);
 		this->tableName = line.substr(0, line.find_first_of('|'));
 		this->primaryKey = line.substr(line.find_first_of('|') + 1);
-		cout << this->tableName << "|" << this->primaryKey << endl;
 
-		getline(FILE, line);  // Вторая строка
+		getline(FILE, line);
 		ColumnDesc Title;
 		int i = 0;
 		int cnt = 0;
@@ -22,67 +23,62 @@ namespace dbmsLib5 {
 			if (line[i] != '|' && line[i] != '\0' && line[i] != '\n')
 			{
 				word += line[i];
-				//cout << line[i] << endl;
 			}
 			else
 			{
-				//cout << cnt << ":" << word << endl;
-
 				switch (cnt)
 				{
-					case 0: {
-						strcpy(Title.colName, word.c_str());
-						cout << Title.colName << endl;
-						word = "";
-						cnt++;
-						break;
+				case 0: {
+					strcpy(Title.colName, word.c_str());
+					word = "";
+					cnt++;
+					break;
+				}
+				case 1: {
+					if (word == "NoType")
+					{
+						Title.colType = NoType;
 					}
-					case 1: {
-						if (word == "NoType")
-						{
-							Title.colType = NoType;
-						}
-						if (word == "Int32")
-						{
-							Title.colType = Int32;
-						}
-						if (word == "Double")
-						{
-							Title.colType = Double;
-						}
-						if (word == "String")
-						{
-							Title.colType = String;
-						}
-						if (word == "Date")
-						{
-							Title.colType = Date;
-						}
-						cout << Title.colType << endl;
-						word = "";
-						cnt++;
-						break;
+					if (word == "Int32")
+					{
+						Title.colType = Int32;
+					}
+					if (word == "Double")
+					{
+						Title.colType = Double;
+					}
+					if (word == "String")
+					{
+						Title.colType = String;
+					}
+					if (word == "Date")
+					{
+						Title.colType = Date;
+					}
+					word = "";
+					cnt++;
+					break;
 
-					}
-					case 2: {
-						Title.length = stoi(word);
-						this->columnHeaders[Title.colName] = Title;
-						cout << Title.colName << " " << Title.length << endl;
-						word = "";
-						cnt++;
-						break;
-					}
-					default:
-						break;
+				}
+				case 2: {
+					Title.length = stoi(word);
+					this->columnHeaders[Title.colName] = Title;
+					word = "";
+					cnt++;
+					break;
+				}
+				default:
+					break;
 				}
 				cnt %= 3;
 			}
 			i++;
 		}
-		// Данные таблицы
+
+		pair<string, void*> parRow;
 		while (!FILE.eof())
 		{
-			Row new_row;
+			Row row = *(new Row);
 			getline(FILE, line);
 			i = 0;
 			for (auto it = this->columnHeaders.begin(); it != this->columnHeaders.end(); it++)
@@ -101,9 +97,20 @@ namespace dbmsLib5 {
 				{
 					i++;
 				}
-				new_row[it->second.colName] = word;
+
+				if (word.size())
+				{
+					parRow.first = it->first;
+					parRow.second = GetValue(word, it->second.colName, this->columnHeaders);
+
+					row.insert(parRow);
+				}
 			}
-			this->data.push_back(new_row);
+			if (row.size())
+			{
+				this->data.push_back(row);
+			}
 		}
+		FILE.close();
 	}
 }

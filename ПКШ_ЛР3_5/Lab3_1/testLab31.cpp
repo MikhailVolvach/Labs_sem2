@@ -7,10 +7,10 @@ int menu() {
 	cout << "\t2 - Печать таблицы\n";
 	cout << "\t3 - Запись таблицы в файл\n";
 	cout << "\t4 - Добавление записи в таблицу\n";
-	cout << "\t5 - Перевести студента в другую группу\n";
-	cout << "\t6 - Распечатать фамилию студента, StudentID которого равен 3\n";
-	cout << "\t7 - Увеличить на 1 количество экземпляров всех книг в библиотеке \n";
-	cout << "\t8 - Тестирование\n";
+	//cout << "\t5 - Перевести студента в другую группу\n";
+	cout << "\t5 - Распечатать фамилию студента, StudentID которого равен 3\n";
+	//cout << "\t6 - Увеличить на 1 количество экземпляров всех книг в библиотеке \n";
+	cout << "\t6 - Тестирование\n";
 	cout << "\t10 - Выход\n";
 	int choice;
 	cout << "Выберите действие\n";
@@ -26,31 +26,35 @@ int menu() {
 
 //-----------------------------------------------------------------
 
-//void testing(string dbName, string tabName) {
-//	string intStr("  12.3.2020   ");
-//	dbmsLib5::DBDate dat(intStr);
-//	cout << dat << endl;
-//	cout << "dbName=" << dbName << "  tabName=" << tabName << endl;
-//	string path = "..\\" + dbName + "\\";
-//	int screenWidth = 40;
-//	dbmsLib5::DBTableTxt tab;
-//	tab.ReadDBTable(path + tabName + ".txt");
-//	tab.PrintTable(screenWidth);
-//	string value = tab.valueToString(tab[0], "Author");
-//	int id;
-//	cout << *(string*)dbmsLib5::GetValue(value, "Author", tab.GetHeader()) << endl;
-//	/*dbmsLib5::Strip* strips;
-//	int nStrip;
-//	tab.CreateTableMaket(strips, nStrip,screenWidth);
-//	cout<<"nStrip="<<nStrip<<endl;
-//	for(int i=0;i<nStrip;i++){
-//		cout<<"strip="<<i<<endl;
-//		for(int j=0;j<strips[i].nField;j++)
-//			cout<<strips[i].fieldWidth[j]<<' ';
-//		cout<<endl;
-//	}*/
-//
-//}
+void testing(string dbName, string tabName) {
+	//string intStr("  12.3.2020   ");
+	//dbmsLib::DBDate dat(intStr);
+	//cout << dat << endl;
+	//cout << "dbName=" << dbName << "  tabName=" << tabName << endl;
+	string path = "..\\" + dbName + "\\";
+	int screenWidth = 40;
+	dbmsLib5::DBTableTxt tab;
+	tab.ReadDBTable(path + tabName + ".txt");
+	tab.PrintTable(screenWidth);
+	//tab.PrintTable(screenWidth);
+	/*string value = tab.valueToString(tab[0], "Author");
+	int id;
+	cout << *(string*)dbmsLib5::GetValue(value, "Author", tab.GetHeader()) << endl;
+
+	cout << "Test of CreateTableMaket" << endl;
+	dbmsLib5::Strip* strips;
+	int nStrip;
+	tab.CreateTableMaket(strips, nStrip, screenWidth);
+	cout << "nStrip = " << nStrip << endl;
+	for (int i = 0; i < nStrip; i++) {
+		cout << "strip = " << i << endl;
+		cout << "nField = " << strips[i].nField << endl;
+		for (int j = 0; j < strips[i].nField; j++)
+			cout << strips[i].fieldWidth[j] << ' ';
+		cout << endl;
+	}*/
+
+}
 
 //=================================================
 int main() {
@@ -80,35 +84,34 @@ int main() {
 	vector<int> indexes;
 	while (true) {
 		switch (menu()) {
-		case 1: tab.ReadDBTable(path + tabName + ".txt");//Чтение таблиц БД. 
-			//БД хранится в папке "..\\"+dbName+". 
-			//Имя БД оканчивается или на Txt, если таблицы БД хранятся в текстовых файлах,
-			//Каждая таблица хранится в отдельном файле с именем = <имя таблицы>+".txt"
-			//Структура файла:
-			//Первая строка файла содержит имя таблицы и имя столбца с первичным ключем
-			//Вторая строка файла - заголовок таблицы
-			//Все последующие строки - записи таблицы. 
+		case 1: tab.ReadDBTable(path + tabName + ".txt");
 			break;
-		case 2: tab.PrintTable(screenWidth);//Печать таблицы БД (screenWidth-ширина экрана)
+		case 2: tab.PrintTable(screenWidth); 
 			break;
-		case 3: tab.WriteDBTable(path + tabName + ".txt");
+		case 3: 
+			tabName += "_copy";
+			tab.WriteDBTable(path + tabName + ".txt");
 			break;
 		case 4: 
-			//tab.AddRow(tab.CreateRow(), tab.GetSize());
+			tab.AddRow(tab.GetSize());
 			break;
-		case 5:
-			//*(string*)tab[3]["Group"] = "IU5-24b";
+		/*case 5:
+			*(string*)tab[3]["Group"] = "IU5-24b";
+			break;*/
+		case 5: 
+			ind = 3;
+			/*indexes = tab.IndexOfRecord(&ind, "StudentID");
+			cout << *(string*)tab[indexes[0]]["Name"] << endl;*/
+			cout << *(string*)tab.GetRow(ind - 1)["Name"] << endl;
 			break;
-		case 6: ind = 3;
-			indexes = tab.IndexOfRecord(&ind, "StudentID");
-			//cout << *(string*)tab[indexes[0]]["Name"] << endl;
-			break;
-		case 7: tabName = "Books";
+		/*case 6: tabName = "Books";
 			tab.ReadDBTable(path + tabName + ".txt");
 			for (int i = 0; i < tab.GetSize(); i++)
-				//(*(int*)tab[i]["Quantity"])++;
-			break;
-		case 8:/*testing(dbName, tabName);*/
+				(*(int*)tab[i]["Quantity"])++;
+			break;*/
+		case 6:
+			tabName = "Books";
+			testing(dbName, tabName);
 			break;
 		case 10: return 0;//завершение работы
 		default:cout << "Недопустимое действие. Повторите выбор\n";

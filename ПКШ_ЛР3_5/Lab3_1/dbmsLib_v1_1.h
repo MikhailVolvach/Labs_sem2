@@ -1,6 +1,7 @@
 #pragma once
 #ifndef _dbmsLib_v1_1_
 #define _dbmsLib_v1_1_
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <fstream>
 #include <strstream>
@@ -8,6 +9,7 @@
 #include <string>
 #include <vector>
 #include <map>
+
 
 using namespace std;
 namespace dbmsLib
@@ -115,22 +117,25 @@ class DBTableTxt{
 		//strips[nStrip] - описание полос таблицы: 
 		//число столбцов и ширина каждого столбца в полосе (выходной параметр)
 		void CreateTableMaket(Strip* &strips,int &nStrip,int screenWidth);
-		friend void ReadDBTable1(DBTableTxt& tab,string fileName);//fileName=path+tableName
-		friend void ReadDBTable2(DBTableTxt& tab,string fileName);//fileName=path+tableName
-		friend void ReadDBTable3(DBTableTxt& tab,string fileName);//fileName=path+tableName
-		friend void ReadDBTable4(DBTableTxt& tab,string fileName);//fileName=path+tableName
-		friend void ReadDBTable5(DBTableTxt& tab,string fileName);//fileName=path+tableName
-		friend void ReadDBTable6(DBTableTxt& tab,string fileName);//fileName=path+tableName
-		friend void ReadDBTable7(DBTableTxt& tab,string fileName);//fileName=path+tableName
-		friend void ReadDBTable8(DBTableTxt& tab,string fileName);//fileName=path+tableName
-		friend void PrintTable1(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
-		friend void PrintTable2(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
-		friend void PrintTable3(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
-		friend void PrintTable4(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
-		friend void PrintTable5(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
-		friend void PrintTable6(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
-		friend void PrintTable7(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
-		friend void PrintTable8(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
+		//friend void ReadDBTable1(DBTableTxt& tab,string fileName);//fileName=path+tableName
+		//friend void ReadDBTable2(DBTableTxt& tab,string fileName);//fileName=path+tableName
+		//friend void ReadDBTable3(DBTableTxt& tab,string fileName);//fileName=path+tableName
+		//friend void ReadDBTable4(DBTableTxt& tab,string fileName);//fileName=path+tableName
+		friend void ReadDBTable5(DBTableTxt& tab, string fileName); //fileName=path+tableName  !!!! ЭТО МЫ ДЕЛАЕМ
+		
+		//friend void ReadDBTable6(DBTableTxt& tab,string fileName);//fileName=path+tableName
+		//friend void ReadDBTable7(DBTableTxt& tab,string fileName);//fileName=path+tableName
+		//friend void ReadDBTable8(DBTableTxt& tab,string fileName);//fileName=path+tableName
+		//friend void PrintTable1(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
+		//friend void PrintTable2(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
+		//friend void PrintTable3(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
+		//friend void PrintTable4(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
+		friend void PrintTable5(DBTableTxt& tab,int screenWidth);//fileName=path+tableName	!!!! ЭТО МЫ ДЕЛАЕМ
+		
+		friend void WriteDBTable5(DBTableTxt& tab, string fileName);
+		//friend void PrintTable6(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
+		//friend void PrintTable7(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
+		//friend void PrintTable8(DBTableTxt& tab,int screenWidth);//fileName=path+tableName
   };
 //======================== класс DBTableSet =====================
 class DBTableSet

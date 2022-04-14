@@ -1,1 +1,9 @@
-﻿  Lab3_1.vcxproj -> C:\Users\misha\Documents\programs\Labs\ПКШ_ЛР3_5\Debug\Lab3_1.exe
+﻿  PrintDBTable.cpp
+c:\users\misha\documents\programs\2sem\пкш_лр3_5\lab3_1\printdbtable.cpp(25): warning C4018: '<' : signed/unsigned mismatch
+c:\users\misha\documents\programs\2sem\пкш_лр3_5\lab3_1\printdbtable.cpp(37): warning C4018: '<' : signed/unsigned mismatch
+c:\users\misha\documents\programs\2sem\пкш_лр3_5\lab3_1\printdbtable.cpp(45): warning C4018: '<' : signed/unsigned mismatch
+c:\users\misha\documents\programs\2sem\пкш_лр3_5\lab3_1\printdbtable.cpp(70): warning C4018: '<' : signed/unsigned mismatch
+LINK : warning LNK4067: ambiguous entry point; selected 'mainCRTStartup'
+dbmsStatLib_v1_1.lib(DBDate.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'dbmsStatLib_v1_1.lib(DBDate.obj)' or at 'C:\Users\misha\Documents\programs\2sem\╧╩╪_╦╨3_5\Debug\vc110.pdb'; linking object as if no debug info
+dbmsStatLib_v1_1.lib(DBTableTxt.obj) : warning LNK4099: PDB 'vc110.pdb' was not found with 'dbmsStatLib_v1_1.lib(DBTableTxt.obj)' or at 'C:\Users\misha\Documents\programs\2sem\╧╩╪_╦╨3_5\Debug\vc110.pdb'; linking object as if no debug info
+  Lab3_1.vcxproj -> C:\Users\misha\Documents\programs\2sem\ПКШ_ЛР3_5\Debug\Lab3_1.exe

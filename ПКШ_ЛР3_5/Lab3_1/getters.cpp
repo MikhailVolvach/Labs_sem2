@@ -22,16 +22,12 @@ namespace dbmsLib5 {
 		char tName[100];
 		int pos1 = path.find_last_of('\\');
 		int pos2 = path.find_last_of('.');
-		//	strcpy_s(tName,100,path.c_str());
-		//	tName[pos2]='\0';
-		//	strcpy_s(tName,80,tName+pos1+1);
 		return path.substr(pos1, pos2 - pos1 - 1); // tName
 	}
-	// TODO: Реализовать 
-	/*Row DBTableTxt::GetRow(int index)
+	Row DBTableTxt::GetRow(int index)
 	{
-		return Row();
-	}*/ 
+		return this->data[index];
+	}
 	void* GetValue(string value, string columnName, Header hdr)
 	{
 		switch (hdr[columnName].colType)
@@ -45,14 +41,12 @@ namespace dbmsLib5 {
 		}
 		return 0;
 	}
-	// TODO: Реализовать 
 	int GetLength(ColumnDesc colDesc)
 	{
-		return 0;
-	} 
-	// TODO: Реализовать 
+		return colDesc.length;
+	}
 	int DBTableTxt::GetSize()
 	{
-		return 0;
+		return this->data.size();
 	}
 }
